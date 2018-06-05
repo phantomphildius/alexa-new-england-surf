@@ -8,7 +8,6 @@ gem 'sinatra'
 
 group :development, :test do
   gem 'byebug'
-  gem 'guard-rspec', require: false
   gem 'rspec'
   gem 'rubocop'
   gem 'sinatra-contrib'
