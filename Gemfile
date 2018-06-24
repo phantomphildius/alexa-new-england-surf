@@ -3,6 +3,7 @@
 source 'https://rubygems.org'
 ruby '2.4.4'
 
+gem 'aws-sdk-core'
 gem 'faraday'
 gem 'sinatra'
 
