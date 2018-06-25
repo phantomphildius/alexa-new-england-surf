@@ -11,27 +11,12 @@ module MagicSeaweed
   class Api
     URL = "https://magicseaweed.com/api/#{token}"
 
-    attr_reader :spot_id, :fields
-
-    def initialize(spot_id:, fields:)
-      @spot_id = spot_id
-      @fields = fields
-    end
-
-    def forecast
-      response = connection.get('forecast', request_options)
+    def self.get(action, options=nil)
+      response = connection.get(action, options)
       MagicSeaweed::Response.new(response: response).body
     end
 
     private
-
-    def request_options
-      {
-        fields: fields,
-        spot_id: spot_id,
-        units: 'us'
-      }.compact
-    end
 
     def connection
       @connection ||= Faraday.new(url: URL)

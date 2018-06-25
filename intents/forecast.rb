@@ -1,4 +1,3 @@
-intent 'Forecast' do |spot_id, fields = nil|
-  forecast = MagicSeaweed::Api.new(spot_id: spot_id, fields: fields).forecast
-  respond(forecast)
+intent 'Forecast' do |spot_id|
+  respond(MagicSeaweed::Forecast.new(spot_id: spot_id).forecast)
 end

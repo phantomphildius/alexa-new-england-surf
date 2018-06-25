@@ -12,7 +12,7 @@ module Alexa
     end
 
     def handle
-      instance_exec request.user_id, &registered_intent(request.intent_name)
+      instance_exec request.spot_id &registered_intent(request.intent_name)
     end
 
     class << self
@@ -32,7 +32,7 @@ module Alexa
     end
 
     def respond(response_details, session_attributes = {})
-      Alexa::Response.build(response_details, session_attributes)
+      Alexa::Response.new(response_details, session_attributes).body
     end
 
     private :request, :registered_intent

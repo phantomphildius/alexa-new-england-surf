@@ -10,11 +10,12 @@ module MagicSeaweed
     attr_reader :response
 
     def initialize(response:)
+      # TODO handle JSON parse errors
       @response = JSON.parse(response.body)
     end
 
     def body
-      success? ? response.to_json : error_response
+      success? ? response : error_response
     end
 
     private
